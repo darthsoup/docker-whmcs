@@ -1,0 +1,5 @@
+.data
+.whmcs
+.env
+/whmcs
+/logs

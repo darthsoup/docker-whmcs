@@ -1,0 +1,56 @@
+version: '3'
+
+networks:
+  whmcs:
+    driver: bridge
+
+volumes:
+  mysql:
+    driver: local
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}
+        - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}
+    volumes:
+      - ./whmcs:/var/www/html
+      - ./nginx/sites/:/etc/nginx/sites-available
+      - ~/.data/logs-nginx/:/var/log/nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - php-fpm
+    networks:
+      - whmcs
+
+  php-fpm:
+    build:
+      context: ./php-fpm
+    volumes:
+      - ./php-fpm/php70.ini:/usr/local/etc/php/php.ini
+      - ./whmcs:/var/www/html
+    expose:
+      - "9000"
+    environment:
+      - PHP_IDE_CONFIG=xwhmcs
+    networks:
+      - whmcs
+
+  mysql:
+    build:
+      context: ./mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./.data/mysql:/var/lib/mysql
+      - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - whmcs
