@@ -12,16 +12,16 @@ A WHMCS 7.1+ developer environment for docker/docker-compose which is heavily in
 
 ## Installation
 
-Clone this repo with git and copy the whmcs.zip folder to the `./whmcs` directory.
+Clone this repo with git and copy the _WHMCS_ installation archive to the `./whmcs` directory.
 
 ### Requirements
 
-You need a valid and licensed copy of WHMCS 7.1+
+You need a valid and licensed copy of WHMCS 7.1+.
+If needed, you can ask the WHMCS Support for a Developer License.
 
 ## Usage
 
-Copy the `.env-example` to `.env` and edit the parameters if you want too.
-
+Copy the `env-example` to `.env` and edit the parameters if you want too.
 
 Start the container with
 
@@ -29,10 +29,10 @@ Start the container with
 docker-compose up
 ```
 
-After building the container, open your browser and open the `/install` directory and install it.
+After building the container, open your browser and browse to the `/install` directory and install it.
 
-WHMCS installation itself may take a while
+WHMCS installation itself may take a while.
 
 ## Contributions
 
-Please use [Github](https://github.com/darthsoup/dockerwhmcs) for reporting bugs, and making comments or suggestions.
+Please use [Github](https://github.com/darthsoup/docker-whmcs) for reporting bugs, and making comments or suggestions.

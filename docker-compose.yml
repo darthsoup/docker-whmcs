@@ -2,11 +2,11 @@ version: '3'
 
 networks:
   whmcs:
-    driver: bridge
+    driver: ${NETWORKS_DRIVER}
 
 volumes:
   mysql:
-    driver: local
+    driver: ${VOLUMES_DRIVER}
 
 services:
   nginx:
@@ -29,6 +29,8 @@ services:
   php-fpm:
     build:
       context: ./php-fpm
+      args:
+        - PHP_VERSION=${PHP_VERSION}
     volumes:
       - ./php-fpm/php70.ini:/usr/local/etc/php/php.ini
       - ./whmcs:/var/www/html
@@ -36,6 +38,14 @@ services:
       - "9000"
     environment:
       - PHP_IDE_CONFIG=xwhmcs
+    networks:
+      - whmcs
+
+  maildev:
+    build: ./maildev
+    ports:
+      - "${MAILDEV_HTTP_PORT}:80"
+      - "${MAILDEV_SMTP_PORT}:25"
     networks:
       - whmcs
 
