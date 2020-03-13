@@ -1,6 +1,6 @@
 ARG PHP_VERSION=${PHP_VERSION}
 
-FROM php:7.0-fpm
+FROM php:${PHP_VERSION}-fpm
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
@@ -9,7 +9,7 @@ RUN apt-get update && \
   libz-dev \
   libpq-dev \
   libjpeg-dev \
-  libpng12-dev \
+  libpng-dev \
   libfreetype6-dev \
   libssl-dev \
   libmcrypt-dev
@@ -34,12 +34,14 @@ RUN apt-get update -yqq && \
     docker-php-ext-configure intl && \
     docker-php-ext-install intl
 
+# Install the php ioncube loader
 RUN cd /tmp \
     && curl -o ioncube.tar.gz http://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
-    && tar -xvvzf ioncube.tar.gz \
-    && mv ioncube/ioncube_loader_lin_7.0.so /usr/local/lib/php/extensions/* \
+    && tar zxpf ioncube.tar.gz \
+    && mv ioncube/ioncube_loader_lin_${PHP_VERSION}.so /usr/local/lib/php/extensions/* \
     && rm -Rf ioncube.tar.gz ioncube \
-    && echo "zend_extension=ioncube_loader_lin_7.0.so" > /usr/local/etc/php/conf.d/docker-php-ext-ioncube_loader.ini
+    && echo "zend_extension=ioncube_loader_lin_${PHP_VERSION}.so" > /usr/local/etc/php/conf.d/docker-php-ext-ioncube_loader.ini \
+    && rm -rf /tmp/ioncube*
 
 COPY ./whmcs.ini /usr/local/etc/php/conf.d
 COPY ./xwhmcs.pool.conf /usr/local/etc/php-fpm.d/

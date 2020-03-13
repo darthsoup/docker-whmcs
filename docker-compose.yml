@@ -33,7 +33,7 @@ services:
         - PHP_VERSION=${PHP_VERSION}
     volumes:
       - ${WHMCS_PATH}:/var/www/html
-      - ./php-fpm/php70.ini:/usr/local/etc/php/php.ini
+      - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini
     expose:
       - "9000"
     environment:
