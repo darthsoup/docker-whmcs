@@ -16,7 +16,7 @@ services:
         - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}
         - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}
     volumes:
-      - ./whmcs:/var/www/html
+      - ${WHMCS_PATH}:/var/www/html
       - ./nginx/sites/:/etc/nginx/sites-available
       - ~/.data/logs-nginx/:/var/log/nginx
     ports:
@@ -32,8 +32,8 @@ services:
       args:
         - PHP_VERSION=${PHP_VERSION}
     volumes:
+      - ${WHMCS_PATH}:/var/www/html
       - ./php-fpm/php70.ini:/usr/local/etc/php/php.ini
-      - ./whmcs:/var/www/html
     expose:
       - "9000"
     environment:
