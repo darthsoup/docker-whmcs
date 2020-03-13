@@ -1,6 +1,8 @@
 ### General Settings
+
 WHMCS_PATH=../whmcs
 
+MYSQL_VERSION=5.7
 PHP_VERSION=7.1
 
 NGINX_PORT_HTTP=8081
