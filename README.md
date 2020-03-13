@@ -23,6 +23,10 @@ If needed, you can ask the WHMCS Support for a Developer License.
 
 Copy the `env-example` to `.env` and edit the parameters if you want too.
 
+Keep in mind, you need to choose the right php version for your WHMCS Installation.
+
+**Example:** WHMCS 7.1 needs PHP 7.0 while Version 7.2 requires PHP 7.1+
+
 Start the container with
 
 ```
@@ -32,6 +36,10 @@ docker-compose up
 After building the container, open your browser and browse to the `/install` directory and install it.
 
 WHMCS installation itself may take a while.
+
+### Development License
+
+If you need a seperate License for your WHMCS installation, you can ask the WHMCS Support for a development license.
 
 ## Contributions
 

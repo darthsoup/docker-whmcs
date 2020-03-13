@@ -1,5 +1,10 @@
 .data
 .whmcs
 .env
+
+.docker-sync
+
 /whmcs
 /logs
+
+.DS_Store
