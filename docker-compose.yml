@@ -30,7 +30,7 @@ services:
     build:
       context: ./php-fpm
       args:
-        - PHP_VERSION=${PHP_VERSION}
+        - INSTALL_PHP_VERSION=${PHP_VERSION}
     volumes:
       - ${WHMCS_PATH}:/var/www/html
       - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini

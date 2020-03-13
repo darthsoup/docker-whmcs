@@ -1,6 +1,8 @@
-ARG PHP_VERSION=${PHP_VERSION}
+ARG INSTALL_PHP_VERSION
 
-FROM php:${PHP_VERSION}-fpm
+FROM php:${INSTALL_PHP_VERSION}-fpm
+
+ARG INSTALL_PHP_VERSION
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
@@ -38,9 +40,9 @@ RUN apt-get update -yqq && \
 RUN cd /tmp \
     && curl -o ioncube.tar.gz http://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
     && tar zxpf ioncube.tar.gz \
-    && mv ioncube/ioncube_loader_lin_${PHP_VERSION}.so /usr/local/lib/php/extensions/* \
+    && mv ioncube/ioncube_loader_lin_${INSTALL_PHP_VERSION}.so /usr/local/lib/php/extensions/* \
     && rm -Rf ioncube.tar.gz ioncube \
-    && echo "zend_extension=ioncube_loader_lin_${PHP_VERSION}.so" > /usr/local/etc/php/conf.d/docker-php-ext-ioncube_loader.ini \
+    && echo "zend_extension=ioncube_loader_lin_${INSTALL_PHP_VERSION}.so" > /usr/local/etc/php/conf.d/docker-php-ext-ioncube_loader.ini \
     && rm -rf /tmp/ioncube*
 
 COPY ./whmcs.ini /usr/local/etc/php/conf.d
