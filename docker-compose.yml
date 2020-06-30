@@ -38,6 +38,8 @@ services:
       - "9000"
     environment:
       - PHP_IDE_CONFIG=xwhmcs
+    extra_hosts:
+      - "dockerhost:${DOCKER_HOST_IP}"
     networks:
       - whmcs
 
