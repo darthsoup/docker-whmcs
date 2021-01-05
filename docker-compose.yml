@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 
 networks:
   whmcs:
@@ -9,6 +9,8 @@ volumes:
     driver: ${VOLUMES_DRIVER}
 
 services:
+
+# nginx
   nginx:
     build:
       context: ./nginx
@@ -26,6 +28,7 @@ services:
     networks:
       - whmcs
 
+# PHP-FPM
   php-fpm:
     build:
       context: ./php-fpm
@@ -43,14 +46,7 @@ services:
     networks:
       - whmcs
 
-  maildev:
-    build: ./maildev
-    ports:
-      - "${MAILDEV_HTTP_PORT}:80"
-      - "${MAILDEV_SMTP_PORT}:25"
-    networks:
-      - whmcs
-
+# MySQL
   mysql:
     build:
       context: ./mysql
@@ -65,6 +61,15 @@ services:
       - ./.data/mysql:/var/lib/mysql
       - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     ports:
-      - "3306:3306"
+      - "${MYSQL_PORT}:3306"
+    networks:
+      - whmcs
+
+# maildev - to test emails
+  maildev:
+    build: ./maildev
+    ports:
+      - "${MAILDEV_HTTP_PORT}:80"
+      - "${MAILDEV_SMTP_PORT}:25"
     networks:
       - whmcs
