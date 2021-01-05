@@ -32,8 +32,7 @@ services:
   php-fpm:
     build:
       context: ./php-fpm
-      args:
-        - INSTALL_PHP_VERSION=${PHP_VERSION}
+      dockerfile: Dockerfile-${PHP_VERSION}
     volumes:
       - ${WHMCS_PATH}:/var/www/html
       - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini

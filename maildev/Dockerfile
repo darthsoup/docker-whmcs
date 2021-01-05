@@ -1,3 +1,3 @@
-FROM djfarrelly/maildev
+FROM maildev/maildev
 
 EXPOSE 80 25
