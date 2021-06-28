@@ -20,7 +20,7 @@ services:
     volumes:
       - ${WHMCS_PATH}:/var/www/html
       - ./nginx/sites/:/etc/nginx/sites-available
-      - ~/.data/logs-nginx/:/var/log/nginx
+      - ./.data/logs-nginx/:/var/log/nginx
     ports:
       - ${NGINX_PORT_HTTP}:80
     depends_on:

@@ -1,7 +1,7 @@
-Docker Container for WHMCS
-===
+# Docker Container for WHMCS
 
-A WHMCS 7.1+ developer environment for docker/docker-compose which is heavily inspired by [Laradock](https://github.com/laradock/laradock/)
+A WHMCS 7.1+ developer environment for Docker, heavily inspired 
+by [Laradock](https://github.com/laradock/laradock/)
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@ A WHMCS 7.1+ developer environment for docker/docker-compose which is heavily in
 
 ## Installation
 
-Clone this repository and copy the [WHMCS](https://download.whmcs.com) installation archive into the directory `./whmcs`.
+Clone this repository and copy the [WHMCS](https://download.whmcs.com) installation archive to the `./whmcs` directory.
 
 ### Requirements
 
@@ -20,12 +20,12 @@ You need a valid and licensed copy of WHMCS. If required, you can contact the WH
 
 ### Tested WHMCS Versions
 
-* [X] 7.1 
+* [X] 7.1
 * [X] 7.2
 * [X] 7.4
 * [X] 7.6
-* [ ] 7.10 (working, but needs additional testing) 
-* [ ] 8.X (may working, but needs additional testing) 
+* [ ] 7.10 (working, but needs additional testing)
+* [ ] 8.X (may working, but needs additional testing)
 
 ## Usage
 
@@ -41,13 +41,11 @@ Start the container with
 docker-compose up
 ```
 
-After building the container, open your browser and browse to the `/install` directory and follow the installation routine. If you dont use special host,
+After building the container, open your browser and browse to the `/install` directory and follow the installation routine.
 
-WHMCS installation itself may take a while. Use `mysql` as Database Host in the Database connection Form
+Use `mysql` for Database Host to continue with the instllation.
 
-### Development License
-
-If you need a seperate License for your WHMCS installation, you contact the WHMCS Support for a development license.
+The WHMCS installation itself takes 2-3 minutes.
 
 ## Contributions
 
