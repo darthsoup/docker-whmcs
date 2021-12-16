@@ -1,6 +1,10 @@
 # Docker Container for WHMCS
 
-A WHMCS 7.1+ developer environment for Docker, heavily inspired 
+[![GitHub forks](https://img.shields.io/github/forks/darthsoup/docker-whmcs)](https://github.com/darthsoup/docker-whmcs/network)
+[![GitHub stars](https://img.shields.io/github/stars/darthsoup/docker-whmcs)](https://github.com/darthsoup/docker-whmcs/stargazers)
+[![GitHub license](https://img.shields.io/github/license/darthsoup/docker-whmcs)](https://github.com/darthsoup/docker-whmcs/blob/master/LICENSE.md)
+
+A WHMCS 7.1+ developer environment for Docker, heavily inspired
 by [Laradock](https://github.com/laradock/laradock/)
 
 ## Table of Contents
@@ -24,8 +28,7 @@ You need a valid and licensed copy of WHMCS. If required, you can contact the WH
 * [X] 7.2
 * [X] 7.4
 * [X] 7.6
-* [ ] 7.10 (working, but needs additional testing)
-* [ ] 8.X (may working, but needs additional testing)
+* [X] 8.2 LTS
 
 ## Usage
 
@@ -46,6 +49,11 @@ After building the container, open your browser and browse to the `/install` dir
 Use `mysql` for Database Host to continue with the instllation.
 
 The WHMCS installation itself takes 2-3 minutes.
+
+## Authors
+
+- [@darthsoup](https://github.com/darthsoup)
+- [@laradock](https://github.com/laradock/laradock)
 
 ## Contributions
 
