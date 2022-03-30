@@ -45,22 +45,22 @@ services:
     networks:
       - whmcs
 
-# MySQL
+# MySQL / MariaDB
   mysql:
     build:
       context: ./mysql
       args:
-        - MYSQL_VERSION=${MYSQL_VERSION}
+        - MARIADB_VERSION=${MARIADB_VERSION}
     environment:
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MARIADB_DATABASE=${MARIADB_DATABASE}
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
     volumes:
       - ./.data/mysql:/var/lib/mysql
       - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     ports:
-      - "${MYSQL_PORT}:3306"
+      - "${MARIADB_PORT}:3306"
     networks:
       - whmcs
 
